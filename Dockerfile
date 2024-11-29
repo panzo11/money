@@ -1,20 +1,15 @@
-FROM node:alpine
+FROM node:14
 
 WORKDIR /app
 
-COPY . .
+COPY package*.json ./
 
 RUN npm install
 
-#RUN npm install --quiet --no-optional --no-fund --loglevel=error && \
-   # npm run build
+COPY . .
+
 RUN npm run build
+
 EXPOSE 3000
 
-CMD [ "npm","run","dev"]
-
-
-#COPY . .
-
-#EXPOSE 3000
-#CMD ["npm", "start"]
+CMD ["npm", "start"]

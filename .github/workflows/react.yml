@@ -16,36 +16,19 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20.5.0'
-        cache: 'npm'
-
-    - name: Clean workspace
-      run: rm -rf node_modules package-lock.json
-
-    - name: Clear npm cache
-      run: npm cache clean --force
-
-    - name: Update npm
-      run: npm install -g npm@latest
+        node-version: '14'
 
     - name: Install dependencies
-      run: npm install --force
-
-    - name: Display npm logs
-      if: failure()
-      run: cat /home/runner/.npm/_logs/*.log
+      run: npm install
 
     - name: Run tests
       run: npm test
 
-    - name: Build Next.js project
-      run: npm run build
-
     - name: Build Docker image
-      run: docker build -t "${{ secrets.DOCKER_HUB_USERNAME }}/react-nextjs-app:latest" .
+      run: docker build -t your-dockerhub-username/react-nextjs-app:latest .
 
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
     - name: Push Docker image
-      run: docker push "${{ secrets.DOCKER_HUB_USERNAME }}/react-nextjs-app:latest"
+      run: docker push your-dockerhub-username/react-nextjs-app:latest
