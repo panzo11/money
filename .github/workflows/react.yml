@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20'
+        node-version: '22'
         cache: 'npm'
 
     - name: Clean workspace
@@ -46,6 +46,3 @@ jobs:
     - name: Push Docker image
       run: docker push "${{ secrets.DOCKER_HUB_USERNAME }}/react-nextjs-app:latest"
 
-    - name: Display npm logs
-      if: failure()
-      run: cat /home/runner/.npm/_logs/*.log
