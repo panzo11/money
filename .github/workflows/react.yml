@@ -45,3 +45,7 @@ jobs:
 
     - name: Push Docker image
       run: docker push "${{ secrets.DOCKER_HUB_USERNAME }}/react-nextjs-app:latest"
+
+    - name: Display npm logs
+      if: failure()
+      run: cat /home/runner/.npm/_logs/*.log
