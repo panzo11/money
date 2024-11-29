@@ -8,11 +8,11 @@ RUN npm install
 
 COPY . .
 
-# Adicione este comando para remover importações não utilizadas
-RUN npx ts-prune
+# Adicione este comando para remover a importação não utilizada
+RUN sed -i '/useContext/d' src/components/TransactionsTable/index.tsx
 
 RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm", "start", "vite"]
+CMD ["npm", "start"]

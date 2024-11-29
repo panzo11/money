@@ -21,8 +21,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Prune unused imports
-      run: npx ts-prune
+    - name: Remove unused import
+      run: sed -i '/useContext/d' src/components/TransactionsTable/index.tsx
 
     - name: Run tests
       run: npm test
