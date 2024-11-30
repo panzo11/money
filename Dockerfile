@@ -1,6 +1,6 @@
 FROM node:14
 
-WORKDIR /app
+WORKDIR /src
 
 COPY package*.json ./
 
@@ -15,4 +15,4 @@ RUN npm run build
 
 EXPOSE 4173
 
-CMD ["npm", "start"]
+CMD ["npm", "start", "dev"]
