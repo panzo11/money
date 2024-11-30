@@ -1,6 +1,6 @@
 FROM node:14
 
-WORKDIR /app
+WORKDIR /src
 
 COPY package*.json ./
 
@@ -8,11 +8,11 @@ RUN npm install
 
 COPY . .
 
-# Verifique se o arquivo existe antes de tentar removê-lo 2
-RUN if [ -f src/components/TransactionsTable/index.tsx ]; then sed -i '/useContext/d' src/components/TransactionsTable/index.tsx; fi
+# Adicione este comando para remover a importação não utilizada
+RUN sed -i '/useContext/d' src/components/TransactionsTable/index.tsx
 
-RUN npm run build
+RUN npm run dev
 
 EXPOSE 5173
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start", "dev"]
