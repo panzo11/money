@@ -8,9 +8,6 @@ RUN npm install
 
 COPY . .
 
-# Verifique se o arquivo existe antes de tentar removê-lo
-RUN if [ -f src/components/TransactionsTable/index.tsx ]; then sed -i '/useContext/d' src/components/TransactionsTable/index.tsx; fi
-
 RUN npm run dev
 
 EXPOSE 5173
