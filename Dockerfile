@@ -13,6 +13,6 @@ RUN sed -i '/useContext/d' src/components/TransactionsTable/index.tsx
 
 RUN npm run build
 
-EXPOSE 3000
+EXPOSE 4173
 
 CMD ["npm", "start"]
