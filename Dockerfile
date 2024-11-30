@@ -1,6 +1,6 @@
 FROM node:14
 
-WORKDIR /src
+WORKDIR /app
 
 COPY package*.json ./
 
@@ -13,6 +13,6 @@ RUN sed -i '/useContext/d' src/components/TransactionsTable/index.tsx
 
 RUN npm run build
 
-EXPOSE 4173
+EXPOSE 5173
 
 CMD ["npm", "run", "dev"]
